@@ -35,11 +35,11 @@ public class ProcessoSeletivo {
 			double salarioPretendido = valorPretendido();
 
 			// Exibe o salário pretendido do candidato
-			System.out.printf("O candidato %s solicitou este valor de salario R$ %.2f\n", candidato, salarioPretendido);
+			System.out.printf("\nO candidato %s solicitou este valor de salario R$ %.2f\n", candidato, salarioPretendido);
 
 			// Verifica se o salário pretendido é menor ou igual ao salário base
 			if (salarioPretendido <= salarioBase) {
-				System.out.printf("O candidato %s foi selecionado para a vaga.\n\n", candidato);
+				System.out.printf("O candidato %s foi selecionado para a vaga.\n", candidato);
 
 				// Armazena o candidato selecionado no array
 				candidatosSelecionados[candidatosSelecionadosCount] = candidato;
@@ -51,7 +51,7 @@ public class ProcessoSeletivo {
 
 		// Caso o número de candidatos selecionados seja menor que 5
 		if (candidatosSelecionadosCount < 5) {
-			System.out.println("Não foi possível selecionar 5 candidatos.");
+			System.out.println("\nNão foi possível selecionar 5 candidatos.");
 		}
 
 		// Imprimir os candidatos selecionados após a seleção
@@ -66,7 +66,7 @@ public class ProcessoSeletivo {
 	// Método para imprimir os candidatos selecionados
 	private static void imprimirCandidatosSelecionados(String[] candidatosSelecionados,
 			int candidatosSelecionadosCount) {
-		System.out.println("Candidatos selecionados:");
+		System.out.println("\nCandidatos selecionados:");
 		for (int i = 0; i < candidatosSelecionadosCount; i++) {
 			System.out.println(candidatosSelecionados[i]);
 		}
@@ -88,16 +88,14 @@ public class ProcessoSeletivo {
 	}
 
 	public static void entrarEmContato(String candidato) {
-		int tentativasRealizadas = 1;
+		int tentativasRealizadas = 0;
 		boolean atendeu = false;
 
 		// Limitar tentativas até o número máximo definido
-		while (tentativasRealizadas <= MAX_TENTATIVAS && !atendeu) {
+		while (tentativasRealizadas < MAX_TENTATIVAS && !atendeu) {
+			tentativasRealizadas++;
 			atendeu = atender();
 
-			if (!atendeu) {
-				tentativasRealizadas++;
-			}
 		}
 
 		// Imprime se o contato foi bem-sucedido ou não
